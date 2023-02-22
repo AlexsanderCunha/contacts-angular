@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <div class="card">
+          <h1>Cadastro</h1>
+  <form >
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  class="form-control" id="nome">
+      </div>
+      <div class="form-group">
+          <label>Email</label>
+          <input type="email" required email=true [(ngModel)]="email" [ngModelOptions]="{standalone: true}"  class="form-control" id="email">
+
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="tel" [(ngModel)]="phone" required [ngModelOptions]="{standalone: true}" class="form-control" id="telefone">
+
+        </div>
+
+      <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Salvar</button>
+    </form>
+  </div>
+  <div>
+      <div class="container mt-4" >
+          <h1>Contatos</h1>
+      <table class="table">
+          <thead>
+           <h1 *ngIf="!isResultLoaded"></h1>
+
+          <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let contact of contactArray">
+              <th scope="row">{{contact.id  }}</th>
+              <td>{{contact.name}}</td>
+              <td>{{contact.email }}</td>
+              <td>{{contact.phone }}</td>
+              <td>
+                <button type="button" class="btn btn-success mr-3" style="margin-left: 12px;" (click)="setUpdate(contact)">Edit</button>
+                <button type="button" class="btn btn-danger ml-2" style="margin-left: 12px;" (click)="setDelete(contact)">Delete</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
